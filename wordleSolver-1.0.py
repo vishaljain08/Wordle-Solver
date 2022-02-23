@@ -141,15 +141,19 @@ while main == True:
 
     discardedLetters = discardedLetters + addDiscarded()
     potentialWords = checkDiscardedLetters(potentialWords, discardedLetters)
-    print (potentialWords)
     GreenPositions = GreenPositions + getGreenPositions()
     potentialWords = checkGreenPositions(GreenPositions, potentialWords)
-    print (potentialWords)
     YellowPositions.update(addYellowPositions())
     potentialWords = checkYellowPositions(YellowPositions, potentialWords)
     
 
-    print (potentialWords)
+    print ("Top choice(s):")
+    if len(potentialWords) < 5:
+        print (*potentialWords, sep='\n')
+    else:
+        for i in range(-1,-5,-1):
+            print (potentialWords[i])
+
     userInput = input("Completed? (y/n) ")
     while True:
         if userInput.lower() == "y":
